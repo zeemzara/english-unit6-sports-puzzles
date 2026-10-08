@@ -1,0 +1,151 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><title>Unit 6 - Sports</title>
+<style>
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);--bg:#fffaf0;--fg:#1e293b;--card:#fff;--line:#cbd5e1;--ok:#16a34a;--soft:#f59e0b;--grey:#cbd5e1;--acc:#f59e0b;--hi:#fde68a}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0f172a;--fg:#e2e8f0;--card:#1e293b;--line:#475569;--grey:#64748b;--hi:#854d0e}}
+:root[data-theme="dark"]{--bg:#0f172a;--fg:#e2e8f0;--card:#1e293b;--line:#475569;--grey:#64748b;--hi:#854d0e}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:17px/1.5 system-ui,-apple-system,Segoe UI,sans-serif;-webkit-text-size-adjust:100%}
+main{max-width:640px;margin:0 auto;padding:12px}
+h1{font-size:1.3rem;margin:.2em 0}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px;margin:10px 0}
+.tabs{display:flex;gap:8px;margin:8px 0}
+.tabs button{flex:1}
+button{font:inherit;font-weight:700;padding:12px 14px;min-height:46px;border:0;border-radius:12px;background:var(--acc);color:#1e293b;cursor:pointer;touch-action:manipulation}
+button.alt{background:var(--line);color:var(--fg)}
+button.on{outline:3px solid var(--fg)}
+button:disabled{opacity:.5}
+.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;display:flex;justify-content:space-between;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:8px 14px;font-weight:800;margin:8px 0}
+.res{background:rgba(22,163,74,.12);border:2px solid var(--ok);border-radius:14px;padding:12px;margin:10px 0;font-size:1.05rem}
+.q{border:2px solid var(--line);border-radius:14px;padding:10px;margin:10px 0}
+.q.done{border-color:var(--ok);background:rgba(22,163,74,.1)}
+.q.shown{border-color:var(--soft);background:rgba(245,158,11,.1)}
+.qh{font-weight:800;margin-bottom:6px}
+.co{display:inline-block;background:var(--hi);color:#1e293b;border-radius:8px;padding:0 8px;font-weight:800;letter-spacing:.05em}
+.row{display:flex;gap:8px;margin-top:8px}
+.row input{flex:1;min-width:0}
+.acts{display:flex;gap:8px;margin-top:8px;flex-wrap:wrap}
+.acts button{min-height:40px;padding:8px 12px}
+input{font:inherit;font-size:18px;padding:10px;border:2px solid var(--line);border-radius:10px;background:var(--bg);color:var(--fg)}
+input.no{border-color:var(--soft)}
+input:read-only{border-color:var(--ok)}
+.fb{min-height:1.4em;font-weight:700;margin-top:6px}
+.fb.ok{color:var(--ok)}
+.hd{margin-top:6px;background:var(--hi);color:#1e293b;border-radius:10px;padding:8px 10px;font-size:1rem}
+.grid{overflow-x:auto;text-align:center}
+table{border-collapse:collapse;margin:auto}
+td{width:44px;height:44px;text-align:center;font-weight:800;padding:0}
+td.c{border:2px solid var(--line);background:var(--card);font-size:1.2rem}
+td.h{background:var(--acc);color:#1e293b;border:2px solid var(--line)}
+td.g{background:var(--grey)}
+td.n{width:24px;font-size:.8rem;font-weight:600;opacity:.7}
+td.t{width:26px;height:30px;border:0;background:none}
+.w5 td{width:34px;height:34px;text-transform:uppercase;font-size:1rem}
+.mw{font-size:1.6rem;letter-spacing:.3em;font-weight:800;text-transform:uppercase}
+@media (max-width:380px){td{width:38px;height:38px}.w5 td{width:30px;height:30px}}
+</style></head><body><main>
+<h1>⚽ Unit 6 - Sports</h1>
+<div class="tabs"><button class="on" id="t1">Exercise 1</button><button class="alt" id="t5">Exercise 2</button></div>
+
+<section id="p1">
+<div class="card"><b>Use the grid to find the first and last letters of each sport. Then write the sport!</b><br>
+Each code has <b>2 letters</b>: the <b>row</b> (left side) first, then the <b>column</b> (top).<br>
+<b>Example:</b> <span class="co">PE</span> = row P, column E = <b>g</b>. <span class="co">BA</span> = row B, column A = <b>f</b>. So g … f = <b>golf</b> ⛳<br>
+💡 Stuck? Tap <b>Hint</b>. Some codes have more than one answer. Any correct sport is OK!</div>
+<div class="card grid"><table id="g1"></table></div>
+<div class="bar"><span id="s1"></span><span id="tm1"></span></div>
+<div class="res" id="rs1" hidden></div>
+<div id="qs1"></div>
+<button class="alt" id="r1">Start again</button>
+</section>
+
+<section id="p5" hidden>
+<div class="card"><b>Complete the sentences.</b> Write the <b>past simple</b> of the missing verb. The letters in the grey boxes make a <b>mystery word</b>!<br><i>Example: Germany <b>won</b> the football World Cup in 2014.</i></div>
+<div class="card grid"><table class="w5" id="g5"></table><div style="margin-top:8px">Mystery word:<br><span class="mw" id="mw"></span></div></div>
+<div class="bar"><span id="s5"></span><span id="tm5"></span></div>
+<div class="res" id="rs5" hidden></div>
+<div id="qs5"></div>
+<button class="alt" id="r5">Start again</button>
+</section>
+</main>
+<script>
+function $(i){return document.getElementById(i)}
+function sw(n){$('p1').hidden=n!=1;$('p5').hidden=n!=5;$('t1').className=n==1?'on':'alt';$('t5').className=n==5?'on':'alt'}
+$('t1').onclick=function(){sw(1)};$('t5').onclick=function(){sw(5)};
+function norm(s){return s.trim().toLowerCase().replace(/\s+/g,' ')}
+function near(a,b){if(a==b)return true;if(Math.abs(a.length-b.length)>1)return false;var i=0,j=0,e=0;while(i<a.length&&j<b.length){if(a[i]==b[j]){i++;j++}else{if(++e>1)return false;if(a.length>b.length)i++;else if(a.length<b.length)j++;else{i++;j++}}}return e+(a.length-i)+(b.length-j)<=1}
+function fmt(s){var m=Math.floor(s/60);s=s%60;return(m<10?'0':'')+m+':'+(s<10?'0':'')+s}
+var TRY=["Almost! Have another look 🙂","Good try! Check again 🔍","Not quite yet. You can do it! 💪"];
+
+function tracker(sc,tm,res,total){
+ var t={ok:0,shown:0,hints:0,t0:0,iv:0};
+ t.tick=function(){tm.textContent='⏱ '+fmt(Math.floor((Date.now()-t.t0)/1000))};
+ t.start=function(){if(!t.t0){t.t0=Date.now();t.iv=setInterval(t.tick,1000)}};
+ t.upd=function(){sc.textContent='⭐ '+t.ok+' / '+total;
+  if(t.ok+t.shown==total){clearInterval(t.iv);t.tick();var s=Math.floor((Date.now()-t.t0)/1000);
+   res.hidden=false;res.innerHTML='🎉 <b>Well done!</b><br>✅ Correct: '+t.ok+' / '+total+'<br>⏱ Time: '+fmt(s)+(t.hints?'<br>💡 Hints used: '+t.hints:'')+(t.shown?'<br>👀 Answers shown: '+t.shown:'')+'<br>Try again to beat your time!';
+   res.scrollIntoView({behavior:'smooth',block:'center'})}};
+ t.reset=function(){clearInterval(t.iv);t.ok=t.shown=t.hints=0;t.t0=0;tm.textContent='⏱ 00:00';res.hidden=true;t.upd()};
+ t.reset();return t}
+
+function build(host,items,render,onFill,onReset,T){
+ var S=[];
+ items.forEach(function(it,i){
+  var q=document.createElement('div');q.className='q';
+  q.innerHTML='<div class="qh">'+(i+1)+'. '+render(it)+'</div><div class="row"><input autocomplete="off" autocapitalize="none" spellcheck="false" enterkeyhint="done" placeholder="Write your answer"><button>Check</button></div><div class="acts"><button class="alt">💡 Hint</button><button class="alt" hidden>👀 Show answer</button></div><div class="fb"></div><div class="hd" hidden></div>';
+  var inp=q.querySelector('input'),cb=q.querySelector('.row button'),bs=q.querySelectorAll('.acts button'),hb=bs[0],sb=bs[1],fb=q.querySelector('.fb'),hd=q.querySelector('.hd'),tries=0,hinted=false,fin=false;
+  function showHint(){if(!hinted){hinted=true;T.hints++}hd.hidden=false;hd.innerHTML=it.hint}
+  function lock(cls){fin=true;inp.readOnly=true;q.className='q '+cls;cb.disabled=hb.disabled=true;sb.hidden=true;onFill(i)}
+  function check(){if(fin)return;T.start();var v=norm(inp.value);
+   if(!v){fb.className='fb';fb.textContent='Write your answer first 🙂';return}
+   if(it.ans.indexOf(v)>=0){var alt=it.ans.filter(function(a){return a!=v});lock('done');T.ok++;fb.className='fb ok';fb.textContent='✅ Great job!'+(alt.length?' (Another answer: '+alt.join(', ')+')':'');hd.hidden=true;T.upd();return}
+   tries++;inp.classList.add('no');fb.className='fb';
+   var close=it.ans.some(function(a){return near(v,a)});
+   fb.textContent=close?'So close! Check your spelling 🙂':TRY[(tries-1)%TRY.length];
+   if(tries>=2&&hd.hidden)showHint();
+   if(tries>=3)sb.hidden=false}
+  cb.onclick=check;inp.onkeydown=function(e){if(e.key=='Enter')check()};inp.oninput=function(){T.start();inp.classList.remove('no')};
+  hb.onclick=function(){T.start();showHint()};
+  sb.onclick=function(){inp.value=it.ans[0];lock('shown');T.shown++;fb.className='fb';fb.textContent='👀 The answer is “'+it.ans[0]+'”. Try the next one!';T.upd()};
+  host.appendChild(q);
+  S.push(function(){tries=0;hinted=false;fin=false;inp.value='';inp.readOnly=false;inp.className='';q.className='q';cb.disabled=hb.disabled=false;sb.hidden=true;fb.textContent='';fb.className='fb';hd.hidden=true});
+ });
+ return function(){S.forEach(function(f){f()});T.reset();onReset()}}
+
+/* ---------- Exercise 1 ---------- */
+var COLS="AEIOU",ROWS="PTGSMB",G={P:"agmsy",T:"bhntz",G:"ciou-",S:"djpv-",M:"ekqw-",B:"flrx-"},g1=$('g1'),tr,td;
+tr=document.createElement('tr');tr.innerHTML='<td class="t"></td>'+COLS.split('').map(function(x){return '<td class="h">'+x+'</td>'}).join('');g1.appendChild(tr);
+ROWS.split('').forEach(function(r){tr=document.createElement('tr');td=document.createElement('td');td.className='h';td.textContent=r;tr.appendChild(td);
+ for(var c=0;c<5;c++){td=document.createElement('td');td.className='c';td.textContent=G[r][c]=='-'?'':G[r][c];tr.appendChild(td)}g1.appendChild(tr)});
+var E1=[
+["BA","BE",["football","futsal"],"⚽ Two teams kick a ball and try to score goals."],
+["PA","PO",["athletics","aerobics"],"🏃 Running, jumping and throwing. Usain Bolt does this!"],
+["TE","PU",["hockey"],"🏑 You hit a small ball with a curved stick."],
+["BI","PU",["rugby"],"🏉 Players run with an oval ball. You can carry it in your hands!"],
+["PE","PO",["gymnastics"],"🤸 You jump, roll and balance on the floor, beam or bars."],
+["SO","BE",["volleyball"],"🏐 Two teams hit a ball over a high net with their hands."],
+["SE","GI",["judo"],"🥋 A martial art. You wear a white suit and throw your partner."],
+["TO","PO",["tennis","table tennis"],"🎾 You hit a ball over a net with a racket."]
+].map(function(e){return{a:e[0],b:e[1],ans:e[2],hint:e[3]}});
+var T1=tracker($('s1'),$('tm1'),$('rs1'),8);
+var reset1=build($('qs1'),E1,function(it){return '<span class="co">'+it.a+'</span> &nbsp;→&nbsp; <span class="co">'+it.b+'</span>'},function(){},function(){},T1);
+$('r1').onclick=reset1;
+
+/* ---------- Exercise 2 ---------- */
+var Q=[
+{b:"Nadia Comăneci",a:"born in Romania.",ans:["was"],g:2,hint:"The verb is “be”. Nadia is one person, so use the singular form: w _ _."},
+{b:"Usain Bolt",a:"the world record in Beijing.",ans:["broke"],g:3,hint:"The verb is “break”. It is an irregular verb. Past: b _ _ _ _."},
+{b:"Pheidippides",a:"from Marathon to Athens.",ans:["ran"],g:1,hint:"The verb is “run”. Past: r _ _."},
+{b:"Pelé",a:"from a poor family.",ans:["came"],g:-1,s:2,hint:"The verb is “come”. Past: c _ _ _."},
+{b:"My dad",a:"to the match on Saturday.",ans:["went"],g:3,hint:"The verb is “go”. Past: w _ _ _."},
+{b:"I",a:"all my homework last night.",ans:["did"],g:-1,s:3,hint:"The verb is “do”. Past: d _ _."},
+{b:"The 2012 Olympics",a:"in London.",ans:["were"],g:3,hint:"The verb is “be”. Olympics = many events, so use the plural form: w _ _ _."}];
+var C=4,W=9,cl=[],okRows={};
+Q.forEach(function(q,i){var tr=document.createElement('tr'),row=[],s=q.g>=0?C-q.g:q.s,n=document.createElement('td');n.className='n';n.textContent=i+1;tr.appendChild(n);
+ for(var c=0;c<W;c++){var td=document.createElement('td'),k=c-s;if(k>=0&&k<q.ans[0].length){td.className='c'+(k==q.g?' g':'');row[k]=td}tr.appendChild(td)}
+ $('g5').appendChild(tr);cl.push(row)});
+function draw(){var mw='';Q.forEach(function(q,i){var ok=!!okRows[i];for(var k=0;k<q.ans[0].length;k++)cl[i][k].textContent=ok?q.ans[0][k]:'';if(q.g>=0)mw+=ok?q.ans[0][q.g]:'_'});$('mw').textContent=mw}
+var T5=tracker($('s5'),$('tm5'),$('rs5'),7);
+var reset5=build($('qs5'),Q,function(q){return q.b+' <u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u> '+q.a},function(i){okRows[i]=1;draw()},function(){okRows={};draw()},T5);
+$('r5').onclick=reset5;draw();
+</script></body></html>
